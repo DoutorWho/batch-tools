@@ -1,3 +1,0 @@
-set nome=DoutorWho
-
-echo. 
