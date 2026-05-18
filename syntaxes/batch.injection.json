@@ -1,0 +1,11 @@
+{
+  "scopeName": "batch.option.injection",
+  "injectionSelector": "L:source.batchfile",
+
+  "patterns": [
+    {
+      "name": "storage.type.batch.option",
+      "match": "\\/(p|a)\\b"
+    }
+  ]
+}
