@@ -533,7 +533,18 @@ const comandos_cmd = {
                 '/i': 'Ignora maiúsculas/minúsculas.',
                 '/r': 'Usa expressões regulares.',
                 '/s': 'Pesquisa em subpastas.',
-                '/n': 'Mostra número das linhas.'
+                '/n': 'Mostra número das linhas.',
+                '/v': 'Mostra apenas as linhas que NÃO contêm o texto pesquisado (inverte a busca).',
+                '/c:TEXTO': 'Procura pelo texto especificado como uma string literal exata (permite espaços).',
+                '/g:ARQUIVO': 'Obtém os termos de busca a partir do arquivo de texto especificado (um termo por linha).',
+                '/f:ARQUIVO': 'Obtém a lista de arquivos que serão vasculhados a partir do arquivo especificado.',
+                '/b': 'Coincide o padrão se ele estiver exatamente no início da linha.',
+                '/e': 'Coincide o padrão se ele estiver exatamente no final da linha.',
+                '/l': 'Trata as strings de busca literalmente (desativa expressões regulares globais).',
+                '/x': 'Mostra apenas as linhas que coincidem exatamente com o texto inteiro.',
+                '/m': 'Mostra apenas o nome do arquivo se ele contiver pelo menos uma ocorrência.',
+                '/o': 'Mostra o deslocamento (offset) em caracteres antes de cada linha localizada.',
+                '/p': 'Ignora arquivos que contêm caracteres não imprimíveis (pula arquivos binários).'
             }
         },
 
@@ -690,7 +701,11 @@ const comandos_cmd = {
             type: 'Pesquisa',
             description: 'Localiza arquivos executáveis.\nSintaxe: `where programa`',
             dependencies: {
-                '/r': 'Pesquisa recursiva.'
+                '/r': 'Pesquisa recursiva.',
+                '/q': 'Modo silencioso (Quiet). Não exibe nada na tela, apenas retorna o código de status (útil em testes de `if errorlevel`).',
+                '/f': 'Exibe o nome do arquivo localizado entre aspas duplas (garante compatibilidade com caminhos que têm espaços).',
+                '/t': 'Exibe o tamanho do arquivo (em bytes), a data e a hora da última modificação junto com o caminho.',
+                '/?': 'Exibe a ajuda detalhada do comando diretamente no prompt.'
             }
         },
 
@@ -728,31 +743,31 @@ const comandos_cmd = {
                 '-noprof': 'Inicia sem perfil.'
             }
         },
-'date': {
-        type: 'Interface',
-        description: 'Exibe ou altera a data atual configurada no sistema operacional.\nSintaxe: `date [/t] [nova_data]`',
-        dependencies: {
+        'date': {
+            type: 'Interface',
+            description: 'Exibe ou altera a data atual configurada no sistema operacional.\nSintaxe: `date [/t] [nova_data]`',
+            dependencies: {
 
-            '/t': {
-                description: 'Exibe apenas a data atual sem solicitar alteração.',
-                'dd/mm/aaaa': 'Formato de data mais comum em sistemas PT-BR.',
-                'mm-dd-aa': 'Pode variar conforme regionalização do Windows.'
+                '/t': {
+                    description: 'Exibe apenas a data atual sem solicitar alteração.',
+                    'dd/mm/aaaa': 'Formato de data mais comum em sistemas PT-BR.',
+                    'mm-dd-aa': 'Pode variar conforme regionalização do Windows.'
+                }
             }
-        }
-    },
+        },
 
-    'time': {
-        type: 'Interface',
-        description: 'Exibe ou altera a hora atual do sistema.\nSintaxe: `time [/t] [nova_hora]`',
-        dependencies: {
+        'time': {
+            type: 'Interface',
+            description: 'Exibe ou altera a hora atual do sistema.\nSintaxe: `time [/t] [nova_hora]`',
+            dependencies: {
 
-            '/t': {
-                description: 'Exibe apenas a hora atual sem permitir edição.',
-                'hh:mm': 'Formato de hora simples.',
-                'hh:mm:ss,cc': 'Formato completo incluindo segundos e centésimos.'
+                '/t': {
+                    description: 'Exibe apenas a hora atual sem permitir edição.',
+                    'hh:mm': 'Formato de hora simples.',
+                    'hh:mm:ss,cc': 'Formato completo incluindo segundos e centésimos.'
+                }
             }
-        }
-    },
+        },
 
     'ver': {
         type: 'Informação',
@@ -1494,7 +1509,23 @@ const comandos_cmd = {
             'renamecomputer': 'Renomeia computador remotamente.',
             'resetpwd': 'Redefine senha da conta máquina.'
         }
-    }
+    },
+
+    'chcp': {
+        type: 'Codificação',
+        description: 'Exibe ou altera a página de código ativa (codificação de caracteres) do console.\nSintaxe: `chcp [PAGINA]`',
+        dependencies: {
+            '65001': {
+                description: 'Define a codificação do console para o padrão universal UTF-8.',
+                '> nul': 'Oculta a mensagem de confirmação automática "Active code page: 65001" no terminal.'
+            },
+
+            '850': {
+                description: 'Define a codificação para o padrão antigo do Windows brasileiro (Multilingual Latin 1).',
+                'original': 'Restaura o padrão do CMD caso precise rodar scripts legados que dependem dessa tabela.'
+            }
+        }
+    },
 };
 
 // colocando os dados
@@ -1502,3 +1533,4 @@ const comandos_cmd = {
 module.exports = {
     comandos_cmd,
 };
+
