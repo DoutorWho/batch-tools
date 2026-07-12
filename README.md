@@ -4,118 +4,117 @@
    <img src="https://raw.githubusercontent.com/DoutorWho/batch-tools/main/images/icon.png" width="250"/>
 </p>
 
-Extensão para **Visual Studio Code** que melhora o desenvolvimento em arquivos `.bat`, trazendo **autocomplete, hover contextual e detecção de variáveis**.
+<p align="center">
+  <b>A extensão definitiva para Visual Studio Code que transforma o desenvolvimento de scripts <code>.bat</code> e <code>.cmd</code> através de Inteligência de Código Avançada.</b>
+</p>
 
 ---
 
-## ⚡ Funcionalidades
+## ⚡ Funcionalidades Principais
 
-- 🔥 Autocomplete para comandos Batch
-- 📚 Mais de 30 comandos nativos suportados
-- 🧩 Mais de 50 parâmetros documentados
-- ⚙️ Suporte a comandos como `set /p`, `set /a`, `mkdir`, `@echo`, `del`, `copy`, `xcopy`, `robocopy` e muitos outros
-- 🪄 Hover explicativo para comandos e parâmetros
-- 🧠 Detecção inteligente de variáveis:
-  - Variáveis do sistema: `%USERNAME%`, `%PATH%`, `%DATE%`, etc
-  - Variáveis criadas (de script) pelo usuário via `set`
+- 🧠 **IntelliSense Contextual:** Autocompletar inteligente para comandos Batch nativos.
+- 📚 **Enciclopédia Nativa:** Mais de 150 comandos cobertos com documentação interna completa.
+- 🧩 **Precisão de Parâmetros:** Mapeamento minucioso de mais de 50 flags, chaves e subdiretivas.
+- 🪄 **Rich Hover (Dicas Dinâmicas):** Passe o mouse sobre comandos, operadores ou variáveis para ver sintaxes, exemplos e escopos imediatamente.
+- ⚙️ **Suporte Avançado:** Tratamento inteligente de estruturas complexas como `set /p`, `set /a`, `mkdir`, `FOR /F`, operadores encadeados e fluxos condicionais.
 
 ---
 
-## 🖼️ Demonstrações
+## 🖼️ Demonstrações Visuais
 
-### 🔹 Autocomplete inteligente
-
-Ao digitar apenas uma letra, a extensão já sugere comandos relevantes com explicação no painel lateral.
-
+### 🔹 1. [NOVO] Autocompletar Inteligente de Comandos
+Ao digitar as primeiras letras, a extensão isola o contexto e sugere comandos relevantes com painéis explicativos laterais.
 <p align="center">
   <img src="https://raw.githubusercontent.com/DoutorWho/batch-tools/main/images/ex01.png" width="700"/>
 </p>
 
----
-
-### 🔹 Parâmetros inteligentes
-
-A extensão reconhece comandos como `set /a`, `set /p`, `mkdir`, etc, exibindo explicações detalhadas dos parâmetros.
-
+### 🔹 2. Parâmetros e Modificadores
+Reconhecimento cirúrgico de subcomandos e flags de sistema (como o `choice`).
 <p align="center">
-  <<img src="https://raw.githubusercontent.com/DoutorWho/batch-tools/main/images/ex02.png" width="700"/>
+  <img src="https://raw.githubusercontent.com/DoutorWho/batch-tools/main/images/ex02.png" width="700"/>
 </p>
 
----
-
-### 🔹 Variáveis automáticas
-
-Detecção automática de variáveis do sistema e do usuário, permitindo sugestões como:
-
-- `%USERNAME%`
-- `%PATH%`
-- `%nome%` (variáveis criadas no script)
-
+### 🔹 3. Rastreamento Dinâmico de Variáveis
+Sugestões automáticas que diferenciam variáveis globais do sistema (`%PATH%`, `%USERNAME%`) de variáveis locais declaradas dinamicamente no script.
 <p align="center">
   <img src="https://raw.githubusercontent.com/DoutorWho/batch-tools/main/images/ex03.png" width="700"/>
 </p>
 
-
-### 🔹 Declaração Ativa de Variáveis locais
-Ao utilizar o comando `set` (seja em atribuições diretas de strings/números como `set n=a`, operações matemáticas com `set /a`, ou através de capturas de entrada do usuário com `set /p nome=`), o interpretador reconhece o identificador imediatamente e o registra como uma variável válida do script.
-
+### 🔹 4. [NOVO] Declaração Ativa de Escopo Local
+Identificação instantânea de variáveis criadas via atribuição direta, aritmética (`set /a`) ou capturas de prompt de usuário (`set /p`).
 <p align="center">
   <img src="https://raw.githubusercontent.com/DoutorWho/batch-tools/main/images/ex04.png" width="700"/>
 </p>
 
----
 
-### 🔹 Inspeção de Escopo via Hover (`%` e `!`)
-Ao posicionar o mouse sobre uma variável delimitada (como `%nome%` ou `!nome!`), a janela de informações de ferramentas (*Hover*) é acionada. O assistente analisa o contexto do arquivo e exibe explicitamente se aquele identificador corresponde a uma **Variável de Script** (escopo local criado por você) ou a uma **Variável de Sistema/Classe** (nativa do Windows).
-
+### 🔹 5. [NOVO] Autocompletar de Encadeamento e Pipes (`|`, `||`, `&`)
+O IntelliSense agora acompanha o fluxo sequencial. Após operadores de pipe ou execução lógica, o assistente prevê e sugere o comando seguinte de forma contínua.
 <p align="center">
   <img src="https://raw.githubusercontent.com/DoutorWho/batch-tools/main/images/ex05.png" width="700"/>
 </p>
 
----
-
-### 🔹Mapeamento e Validação de Labels
-O motor da extensão monitora as instruções de salto e desvio de fluxo. Ao interagir com comandos como `goto nome_do_label`, `call :nome_do_label` ou diretamente em cima da linha de definição (`:nome_do_label`), o sistema valida a estrutura e a categoriza estritamente como um **Label** (ponto de ancoragem de execução).
-
+### 🔹 6. [NOVO] IntelliSense de Caminhos e Arquivos do Diretório
+Comandos baseados em I/O (como `cd` e `del`) listam dinamicamente as pastas e arquivos do seu workspace atual para evitar erros de digitação.
 <p align="center">
   <img src="https://raw.githubusercontent.com/DoutorWho/batch-tools/main/images/ex06.png" width="700"/>
+  <img src="https://raw.githubusercontent.com/DoutorWho/batch-tools/main/images/ex07.png" width="700"/>
 </p>
+
 ---
 
-# 🚀 Notas de Atualização — Versão 1.0
+# 🚀 Notas de Atualização — Versão 2.0 (Major Release)
 
-## 🛠️ Novas Funcionalidades e Suporte à Sintaxe
-* **Suporte ao `setlocal`:** Adicionado mapeamento completo para diretivas de escopo, incluindo a expansão atrasada do (`enabledelayedexpansion`).
-* **Aprimoramento do Loop `FOR`:** Implementado suporte ao parâmetro `/F` e suas subdiretivas de formatação de texto, como o manipulador de delimitadores (`delims`).
-* **Novos Comandos Mapeados:** Adicionado suporte e reconhecimento para os comandos `type`, `exit` (e seus argumentos de saída) e para a variável de sistema `%errorlevel%`.
+Esta nova versão marca uma reestruturação profunda no núcleo da extensão, focando em **arquitetura limpa**, **estabilidade de compilação** e **cobertura contra falsos-positivos**.
 
-## 💡 IntelliSense & Autocompletar (Labels e Variáveis)
-* **Autocompletar Inteligente de Labels:** Ao digitar `:`, o sistema agora analisa o escopo do arquivo. Se um comando `call` correspondente já tiver sido declarado anteriormente, a label será sugerida de forma automática.
-* **Gatilhos de Variáveis (`!` e `%`):** Configurado o disparo do autocompletar ao interagir com variáveis comuns (`%variavel%`) e variáveis de expansão atrasada (`!variavel!`).
-  * *Nota: O sistema realiza a leitura dos gatilhos de forma independente, sem validar se o comando `setlocal` está explicitamente ativo no documento.*
-* **Support a Hover (Dicas ao Passar o Mouse):** Adicionada a exibição de janelas de informações (*Hover*) detalhadas para variáveis, comando `set`, parâmetros, subdiretivas e labels.
+## 🛠️ Novas Funcionalidades e Operadores Avançados
+* **IntelliSense Pós-Operadores (`|`, `||`, `&`, `&&`):** Agora, ao utilizar comandos encadeados ou saídas redirecionadas (ex: `tasklist | `, `dir && `), o motor reavalia o cursor e sugere novos comandos imediatamente.
+* **Autocompletar de Sistema de Arquivos Local:** Comandos de navegação e manipulação de arquivos (como `cd`, `del`, `rd`) agora varrem o diretório em tempo real para sugerir subpastas e arquivos válidos.
+* **Novos Comandos e Dependências:** Adicionado mapeamento nativo para o gerenciador de páginas de código `chcp`, além de novas tabelas de dependências internas associadas.
 
-## 🐛 Correções de Bugs (Bugfixes)
-* **Tratamento do Caractere `%`:** Corrigido o comportamento inesperado onde o interpretador disparava rotinas incorretamente ao identificar a duplicidade do caractere (`%%`). Com esta revisão, o fluxo foi normalizado e o erro foi mitigado.
+## 💡 Aprimoramentos no IntelliSense e Hover
+* **Sugestões Seguras de Labels:** Correção do algoritmo de gatilho para a sintaxe `:`. Agora, ao acionar `call :` e invocar o autocompletar, as âncoras (`goto`) mapeadas aparecem perfeitamente de forma contextualizada.
+* **Ajuste de Contexto Inteligente:** Bloqueio do IntelliSense intrusivo dentro de escopos de comentários (`::` e `rem`). O motor ignora essas linhas para evitar poluição visual enquanto você digita notas textuais.
 
-## 📝 Documentação e Experiência do Usuário (UX/UI)
-* **Descrições Ricas:** As documentações de ajuda de todos os comandos foram reformuladas. Agora elas exibem exemplos práticos de execução e detalham minuciosamente a função de cada parâmetro (como as flags do comando `FOR`).
-* **Design Renovado:** Interface visual e componentes de código de sugestão refinados, garantindo uma experiência de desenvolvimento muito mais limpa, moderna e agradável.
+## 🐛 Principais Correções de Bugs (Mais de 20 Bugfixes)
+* **Prevenção de Vazamento de Cores em Comentários:** Corrigido o bug crítico onde delimitadores de variáveis (`%variavel%` ou `!variavel!`) quebrassem a tokenização de realce de sintaxe ao serem digitados dentro de blocos `::` ou `rem`.
+* **Correção do Gatilho Especial `:`:** Eliminada a intermitência que impedia o disparo correto do painel de sugestões após chamadas do comando `call`.
+* **Estabilidade do Motor Hover:** Tratadas múltiplas exceções nulas geradas ao posicionar o mouse sobre caracteres de escape ou variáveis duplicadas (`%%`).
 
-## 💻 Exemplo de uso
+## 💻 Arquitetura do Projeto
+Para garantir um desenvolvimento escalável, o projeto abandonou o formato de arquivo único e foi modularizado:
+* `data/commands/`: Concentra os esquemas, metadados e documentações ricas de cada comando Batch individualmente.
+* `features/`: Repositório isolado contendo as regras de negócios específicas para funcionalidades de *Autocomplete*, *Hover* e *Tokenização*.
+
+> 📅 **Nota de Futuro:** Esta nova segmentação prepara o ecossistema para a implementação de novas ferramentas avançadas de análise estática de código que chegarão em atualizações futuras.
+
+---
+
+## 💻 Exemplo de Uso Avançado (v2.0)
 
 ```bat
 @echo off
+:: Ativação de variáveis locais com expansão atrasada
+setlocal enabledelayedexpansion
+
+chcp 65001 >nul
 
 set /p nome=Digite seu nome:
-echo Olá %nome%
+echo Olá !nome!
+
+:: O IntelliSense resolverá as sugestões de arquivos para este bloco
+cd /d "%~dp0"
+
+:: Filtragem encadeada monitorada pelo novo motor pós-pipe
+tasklist | findstr /i "cmd.exe"
 
 set /a idade=20+5
 echo Idade: %idade%
 
-echo Usuário: %USERNAME%
-
-if "%nome%"=="DoutorWho" (
-    echo Bem-vindo!
+if "!nome!"=="DoutorWho" (
+    call :boasVindas
 )
+exit /b 0
 
+:boasVindas
+echo Bem-vindo ao Batch Tools v2.0!
+goto :eof

@@ -2,13 +2,13 @@
 const vscode = require('vscode');
 
 // 1. Importa os comandos de onde eles estiverem guardados
-const { comandos_cmd } = require('./src/data/comandos_batch.js');
-const { variaveis_de_sistemas } = require('./src/data/variaveis_sistemas.js');
 
-// 2. Importa os inicializadores dos provedores (Providers)
-const { criarHoverProvider } = require('./src/providers/hover.js');
-const { criarAutocompleteProvider } = require('./src/providers/autocomplete.js');
-const { inicializarDecorations } = require('./src/providers/decorations.js');
+const {comandos_cmd, variaveis_de_sistemas} = require('./src/data/index.js');
+
+// 2. Importa os inicializadores dos provedores (Providers) | Complement, hover e decoration
+
+const { criarAutocompleteProvider, criarHoverProvider, criarDecorationsProvider } = require('./src/features/provider.js');
+
 
 function activate(context) {
     vscode.window.showInformationMessage('Batch Tools ativado');
@@ -26,7 +26,7 @@ function activate(context) {
     const autocompleteProvider = criarAutocompleteProvider(commandMap, systemVars);
 
     // Inicializa e ativa os Listeners de Decoração Visuais (Cores das variáveis e flags)
-    inicializarDecorations(context, commandMap);
+    criarDecorationsProvider(context, commandMap);
 
     // 4. Registra os provedores no ciclo de vida do VS Code
     context.subscriptions.push(hoverProvider, autocompleteProvider);

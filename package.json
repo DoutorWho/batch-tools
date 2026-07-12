@@ -2,7 +2,7 @@
   "name": "batch-tools",
   "displayName": "Batch Tools",
   "description": "Ferramenta de autocomplete para Batch (.bat)",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "publisher": "DoutorWho",
 
   "categories": [
